@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>To find the location .....</h1>
+    <p id ="Location"></p>
+
+    <script>
+        const apiKey = "0787462878526f7d188329eb5e7111f8";
+        const Location = document.getElementById('Location');
+        function weatherFetch(){
+            if(navigator.geolocation)
+            {
+                const response = navigator.geolocation.getCurrentPosition(showPosition);
+            }
+        }
+        function showPosition(position){
+            let lat = position.coords.latitude;
+            let long = position.coords.longitude;
+            Location.innerHTML = `${lat} ${long}`;
+            //const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${apikey}`;
+           // fetch(api).then((response) => response.json()).then((data)=>{
+           // Location.innerHTML = data.main.temp.toString();
+          // });
+        }
+        weatherFetch();
+    </script>
+</body>
+</html>
